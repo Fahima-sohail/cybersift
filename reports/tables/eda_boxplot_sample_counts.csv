@@ -1,0 +1,37 @@
+feature,Label,sampled_rows,positive_rows_plotted
+Flow Packets/s,BENIGN,20000,19989
+Flow Packets/s,DDoS,20000,19999
+Flow Packets/s,PortScan,20000,19970
+Flow Packets/s,DoS Hulk,20000,20000
+Flow Packets/s,FTP-Patator,5933,5931
+Flow Packets/s,Bot,1953,1948
+Flow Duration,BENIGN,20000,19989
+Flow Duration,DDoS,20000,19999
+Flow Duration,PortScan,20000,19970
+Flow Duration,DoS Hulk,20000,20000
+Flow Duration,FTP-Patator,5933,5931
+Flow Duration,Bot,1953,1948
+Total Fwd Packets,BENIGN,20000,20000
+Total Fwd Packets,DDoS,20000,20000
+Total Fwd Packets,PortScan,20000,20000
+Total Fwd Packets,DoS Hulk,20000,20000
+Total Fwd Packets,FTP-Patator,5933,5933
+Total Fwd Packets,Bot,1953,1953
+SYN Flag Count,BENIGN,20000,1118
+SYN Flag Count,DDoS,20000,0
+SYN Flag Count,PortScan,20000,0
+SYN Flag Count,DoS Hulk,20000,0
+SYN Flag Count,FTP-Patator,5933,1944
+SYN Flag Count,Bot,1953,0
+Average Packet Size,BENIGN,20000,17513
+Average Packet Size,DDoS,20000,20000
+Average Packet Size,PortScan,20000,19896
+Average Packet Size,DoS Hulk,20000,19063
+Average Packet Size,FTP-Patator,5933,5917
+Average Packet Size,Bot,1953,1951
+Flow IAT Mean,BENIGN,20000,19989
+Flow IAT Mean,DDoS,20000,19999
+Flow IAT Mean,PortScan,20000,19970
+Flow IAT Mean,DoS Hulk,20000,20000
+Flow IAT Mean,FTP-Patator,5933,5931
+Flow IAT Mean,Bot,1953,1948
