@@ -1,12 +1,23 @@
 """Loading, cleaning, and preparing CIC-IDS2017 flow data."""
 
 from pathlib import Path
+import json
 import re
 
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
-from cybersift.config import DROP_COLUMNS, LABEL_COL
+from cybersift.config import (
+    DAY_ORDER,
+    DROP_COLUMNS,
+    EXPECTED_FEATURE_COUNT,
+    FEATURES_PATH,
+    LABEL_COL,
+    MODELS_DIR,
+    RANDOM_STATE,
+    SPLITS_PATH,
+)
 
 
 def _day_from_filename(filename):
@@ -93,3 +104,76 @@ def prepare_features(df, features):
         result[column] = pd.to_numeric(result[column], errors="coerce")
     result = result.replace([np.inf, -np.inf], np.nan)
     return result
+
+
+def get_feature_list(df):
+    """Save and return the cleaned dataset's model feature names."""
+    features = [
+        column for column in df.columns if column not in {LABEL_COL, "is_attack", "day"}
+    ]
+    if len(features) != EXPECTED_FEATURE_COUNT:
+        raise ValueError(
+            f"Expected {EXPECTED_FEATURE_COUNT} features, found {len(features)}."
+        )
+
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    with FEATURES_PATH.open("w", encoding="utf-8") as feature_file:
+        json.dump(features, feature_file, indent=2)
+        feature_file.write("\n")
+    return features
+
+
+def make_splits(df):
+    """Add random and weekday split assignments, then save the full rows."""
+    required = [LABEL_COL, "day"]
+    missing = [column for column in required if column not in df.columns]
+    if missing:
+        raise ValueError(f"Missing required split columns: {missing}")
+    if df.empty:
+        raise ValueError("Cannot split an empty dataset.")
+
+    data = df.reset_index(drop=True).copy()
+    row_numbers = np.arange(len(data))
+
+    train_val_rows, test_rows = train_test_split(
+        row_numbers,
+        test_size=0.2,
+        random_state=RANDOM_STATE,
+        stratify=data[LABEL_COL],
+    )
+    train_rows, val_rows = train_test_split(
+        train_val_rows,
+        test_size=0.15,
+        random_state=RANDOM_STATE,
+        stratify=data.iloc[train_val_rows][LABEL_COL],
+    )
+
+    random_split = np.empty(len(data), dtype=object)
+    random_split[train_rows] = "train"
+    random_split[val_rows] = "val"
+    random_split[test_rows] = "test"
+
+    unknown_days = sorted(set(data["day"].dropna().unique()) - set(DAY_ORDER))
+    if unknown_days or data["day"].isna().any():
+        raise ValueError(f"Unknown or missing day values: {unknown_days}")
+    dayshift_split = np.where(data["day"].to_numpy() == "Friday", "test", "train")
+
+    data["split"] = random_split
+    data["dayshift"] = dayshift_split
+
+    # Each row must be assigned to exactly one group in each split protocol.
+    for assignment, allowed_groups in (
+        (random_split, {"train", "val", "test"}),
+        (dayshift_split, {"train", "test"}),
+    ):
+        if pd.isna(assignment).any() or not set(assignment).issubset(allowed_groups):
+            raise AssertionError("Some rows have missing or invalid split assignments.")
+        memberships = np.zeros(len(data), dtype=np.int8)
+        for group in allowed_groups:
+            memberships += assignment == group
+        if not np.all(memberships == 1):
+            raise AssertionError("A row is assigned to more than one split group.")
+
+    SPLITS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    data.to_parquet(SPLITS_PATH, index=False)
+    return data
