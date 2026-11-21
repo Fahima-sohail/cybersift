@@ -1,4 +1,9 @@
 {
-  "flow_packets_s_p99": 1000000.0,
-  "flow_duration_median": 33674.0
+  "R1_bwd_packet_length_std_gt": 1496.86,
+  "R2_bwd_packet_length_mean_gt": 1933.4,
+  "R3_total_length_fwd_packets_lte": 3,
+  "R3_bwd_packets_s_gt": 13483.1,
+  "R3_fallback_min_seg_size_forward_gt": 38,
+  "R3_uses_fallback": true,
+  "R4_destination_port_lte": 22
 }

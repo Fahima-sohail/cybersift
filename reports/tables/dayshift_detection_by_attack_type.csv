@@ -1,0 +1,4 @@
+Label,friday_rows,RF recall,too_rare,status
+Bot,1953,0.0,False,enough rows
+DDoS,128016,0.6327412198475191,False,enough rows
+PortScan,90819,0.00202600777370374,False,enough rows

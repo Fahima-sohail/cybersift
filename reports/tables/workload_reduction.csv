@@ -1,0 +1,9 @@
+measure,value
+threshold,0.5051498505444827
+flows_flagged,85453.0
+percent_of_all_flows_reviewed,16.660622650632476
+attacks_caught,85013.0
+percent_of_attacks_caught,99.81214704190295
+precision_among_flagged,0.9948509707090447
+precision_top_1000,1.0
+precision_top_10000,1.0

@@ -1,0 +1,21 @@
+Label,error_type,attack_probability,feature_1,feature_1_deviation,feature_2,feature_2_deviation,feature_3,feature_3_deviation,feature_4,feature_4_deviation,feature_5,feature_5_deviation
+DDoS,false_negative,0.0001355026867333102,Fwd IAT Min,418056.0,Flow IAT Min,418055.6666666667,Fwd IAT Total,313541.75,Fwd IAT Mean,313541.75,Fwd IAT Max,313541.75
+Bot,false_negative,0.00041063164477798627,Bwd IAT Total,20333332.333333332,Fwd IAT Total,15124999.0,Idle Mean,10000000.0,Idle Max,10000000.0,Idle Min,9997501.0
+PortScan,false_negative,0.01,Idle Max,11700000.0,Idle Mean,11500000.0,Idle Min,11400000.0,Fwd IAT Total,6849999.0,Fwd IAT Std,5423291.5
+PortScan,false_negative,0.02,Idle Mean,11400000.0,Idle Max,11400000.0,Idle Min,11400000.0,Fwd IAT Std,5278400.0,Fwd IAT Total,3999999.0
+DDoS,false_negative,0.02023508086858889,Fwd IAT Min,1320638.6666666667,Flow IAT Min,1320638.3333333333,Fwd IAT Total,990478.75,Fwd IAT Mean,990478.75,Fwd IAT Max,990478.75
+Bot,false_negative,0.027680505588969635,Bwd Packets/s,411.5006046758689,Init_Win_bytes_backward,257.0,Flow Packets/s,255.7846990144689,Fwd Packets/s,229.98084385718565,Destination Port,148.0
+DoS Hulk,false_negative,0.028721519094803975,Fwd IAT Min,469.0,Flow IAT Min,468.6666666666667,Fwd IAT Total,351.5,Fwd IAT Mean,351.5,Fwd IAT Max,351.5
+Bot,false_negative,0.031708734445956226,Destination Port,1913.2222222222222,Bwd Packets/s,1339.6295326973527,Flow Packets/s,833.5629544324473,Fwd Packets/s,749.6985405431584,Init_Win_bytes_backward,257.0
+DDoS,false_negative,0.05395387951516443,Bwd Packets/s,9383.413697743114,Flow Packets/s,5840.974577455711,Fwd Packets/s,5253.9186469117385,Flow Bytes/s,671.1543959652357,Init_Win_bytes_backward,230.0
+DDoS,false_negative,0.06507419366916889,Bwd Packets/s,12511.55236702089,Flow Packets/s,7788.301558087215,Fwd Packets/s,7005.5600137819865,Flow Bytes/s,895.205861286981,Init_Win_bytes_backward,230.0
+Web Attack - Sql Injection,false_negative,0.06693475678691932,Bwd IAT Std,2868231.0,Bwd IAT Total,1689932.0,Bwd IAT Max,1667218.6666666667,Bwd IAT Mean,563310.0,Fwd IAT Std,39060.03125
+Infiltration,false_negative,0.07025583948976512,Bwd IAT Std,18900000.0,Bwd IAT Total,14233332.333333334,Bwd IAT Max,14133332.333333334,Bwd IAT Mean,2844209.0,Fwd IAT Std,94867.0390625
+DoS slowloris,false_negative,0.0711021021021021,Fwd IAT Min,333260.6666666667,Flow IAT Min,333260.3333333333,Fwd IAT Total,249945.25,Fwd IAT Mean,249945.25,Fwd IAT Max,249945.25
+DoS slowloris,false_negative,0.0711021021021021,Fwd IAT Min,333216.0,Flow IAT Min,333215.6666666667,Fwd IAT Total,249911.75,Fwd IAT Mean,249911.75,Fwd IAT Max,249911.75
+Bot,false_negative,0.07178555897547736,Destination Port,1908.1851851851852,Bwd Packets/s,1103.0477015551028,Flow Packets/s,686.2861768921229,Fwd Packets/s,617.2215099854451,Init_Win_bytes_backward,257.0
+Bot,false_negative,0.07829482792151846,Bwd Packets/s,2207.096540148566,Destination Port,1948.888888888889,Flow Packets/s,1373.577987975519,Fwd Packets/s,1235.4478168044652,Init_Win_bytes_backward,257.0
+DoS Hulk,false_negative,0.08004897159647405,Fwd IAT Std,3526661.75,Fwd IAT Total,1253361.75,Fwd IAT Max,1250112.0,Fwd IAT Mean,626680.375,Init_Win_bytes_backward,28961.0
+Bot,false_negative,0.08457597867727182,Destination Port,1914.851851851852,Bwd Packets/s,871.9677035569662,Flow Packets/s,542.4343971722876,Fwd Packets/s,487.8253014588956,Init_Win_bytes_backward,257.0
+Bot,false_negative,0.0895010109585161,Destination Port,1979.2962962962963,Bwd Packets/s,815.0349514895374,Flow Packets/s,506.99265500421905,Fwd Packets/s,455.9450767647325,Init_Win_bytes_backward,257.0
+Web Attack - Brute Force,false_negative,0.09068872212660238,Bwd IAT Total,6433332.333333333,Fwd IAT Total,5199999.0,Bwd IAT Std,774043.8125,Bwd IAT Max,668531.0,Fwd IAT Std,599171.8125

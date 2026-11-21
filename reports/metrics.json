@@ -1,0 +1,301 @@
+{
+  "random_test": {
+    "models": {
+      "Rules": {
+        "threshold": 0.5,
+        "n_flows": 512904,
+        "precision": 0.7989034710174676,
+        "recall": 0.7082760968851631,
+        "f1": 0.7508650519031141,
+        "roc_auc": 0.8363874060996136,
+        "pr_auc": 0.6142879955955868,
+        "false_positive_rate": 0.03550128468593579,
+        "scoring_flows_per_second": 23866656.72112538,
+        "confusion_matrix": [
+          [
+            412546,
+            15185
+          ],
+          [
+            24847,
+            60326
+          ]
+        ]
+      },
+      "LogisticRegression": {
+        "threshold": 0.63370680809021,
+        "n_flows": 512904,
+        "precision": 0.8381418041269775,
+        "recall": 0.9318328578305332,
+        "f1": 0.8825076306381938,
+        "roc_auc": 0.987276415206945,
+        "pr_auc": 0.9426619674158653,
+        "false_positive_rate": 0.035833269040588596,
+        "scoring_flows_per_second": 643591.5769058168,
+        "confusion_matrix": [
+          [
+            412404,
+            15327
+          ],
+          [
+            5806,
+            79367
+          ]
+        ]
+      },
+      "DecisionTree": {
+        "threshold": 0.825939264006118,
+        "n_flows": 512904,
+        "precision": 0.9894222754434778,
+        "recall": 0.9894919751564463,
+        "f1": 0.9894571240725087,
+        "roc_auc": 0.998417172412673,
+        "pr_auc": 0.9936496035670367,
+        "false_positive_rate": 0.0021064641094519685,
+        "scoring_flows_per_second": 1110446.2100523356,
+        "confusion_matrix": [
+          [
+            426830,
+            901
+          ],
+          [
+            895,
+            84278
+          ]
+        ]
+      },
+      "RandomForest": {
+        "threshold": 0.5051498505444827,
+        "n_flows": 512904,
+        "precision": 0.9948509707090447,
+        "recall": 0.9981214704190295,
+        "f1": 0.9964835370928229,
+        "roc_auc": 0.9999652992395641,
+        "pr_auc": 0.9998287725216349,
+        "false_positive_rate": 0.0010286839158256008,
+        "scoring_flows_per_second": 247712.67215229358,
+        "confusion_matrix": [
+          [
+            427291,
+            440
+          ],
+          [
+            160,
+            85013
+          ]
+        ]
+      }
+    },
+    "detection_by_attack_type": [
+      {
+        "Label": "Bot",
+        "test_rows": 391,
+        "RF recall": 0.8439897698209718,
+        "Rules recall": 0.0,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "DDoS",
+        "test_rows": 25603,
+        "RF recall": 0.999531304925204,
+        "Rules recall": 0.6337147990469867,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "DoS GoldenEye",
+        "test_rows": 2056,
+        "RF recall": 0.9956225680933852,
+        "Rules recall": 0.6697470817120622,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "DoS Hulk",
+        "test_rows": 34570,
+        "RF recall": 0.9986115128724328,
+        "Rules recall": 0.8923054671680648,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "DoS Slowhttptest",
+        "test_rows": 1046,
+        "RF recall": 0.994263862332696,
+        "Rules recall": 0.5229445506692161,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "DoS slowloris",
+        "test_rows": 1075,
+        "RF recall": 0.9944186046511628,
+        "Rules recall": 0.3032558139534884,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "FTP-Patator",
+        "test_rows": 1187,
+        "RF recall": 1.0,
+        "Rules recall": 1.0,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "Heartbleed",
+        "test_rows": 2,
+        "RF recall": 1.0,
+        "Rules recall": 1.0,
+        "too_rare": true,
+        "status": "too rare"
+      },
+      {
+        "Label": "Infiltration",
+        "test_rows": 7,
+        "RF recall": 0.7142857142857143,
+        "Rules recall": 0.0,
+        "too_rare": true,
+        "status": "too rare"
+      },
+      {
+        "Label": "PortScan",
+        "test_rows": 18164,
+        "RF recall": 0.9998348381413785,
+        "Rules recall": 0.5048447478528958,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "SSH-Patator",
+        "test_rows": 644,
+        "RF recall": 0.9937888198757764,
+        "Rules recall": 1.0,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "Web Attack - Brute Force",
+        "test_rows": 294,
+        "RF recall": 0.9897959183673469,
+        "Rules recall": 0.003401360544217687,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "Web Attack - Sql Injection",
+        "test_rows": 4,
+        "RF recall": 0.0,
+        "Rules recall": 0.0,
+        "too_rare": true,
+        "status": "too rare"
+      },
+      {
+        "Label": "Web Attack - XSS",
+        "test_rows": 130,
+        "RF recall": 0.9846153846153847,
+        "Rules recall": 0.0,
+        "too_rare": false,
+        "status": "enough rows"
+      }
+    ],
+    "workload_reduction": {
+      "threshold": 0.5051498505444827,
+      "flows_flagged": 85453,
+      "percent_of_all_flows_reviewed": 16.660622650632476,
+      "attacks_caught": 85013,
+      "percent_of_attacks_caught": 99.81214704190295,
+      "precision_among_flagged": 0.9948509707090447,
+      "precision_top_1000": 1.0,
+      "precision_top_10000": 1.0
+    },
+    "false_negative_counts_by_attack": {
+      "DDoS": 12,
+      "PortScan": 3,
+      "Bot": 61,
+      "Infiltration": 2,
+      "Web Attack - Brute Force": 3,
+      "Web Attack - XSS": 2,
+      "Web Attack - Sql Injection": 4,
+      "SSH-Patator": 4,
+      "DoS slowloris": 6,
+      "DoS Slowhttptest": 6,
+      "DoS Hulk": 48,
+      "DoS GoldenEye": 9
+    }
+  },
+  "dayshift_friday": {
+    "model": "RandomForest (dayshift)",
+    "metrics": {
+      "threshold": 0.5,
+      "n_flows": 615881,
+      "precision": 0.998057607907257,
+      "recall": 0.3677056724097324,
+      "f1": 0.5374158891341835,
+      "roc_auc": 0.790947553449588,
+      "pr_auc": 0.7413397245743903,
+      "false_positive_rate": 0.00039990584495296045,
+      "scoring_flows_per_second": 352057.19153036183,
+      "confusion_matrix": [
+        [
+          394935,
+          158
+        ],
+        [
+          139603,
+          81185
+        ]
+      ]
+    },
+    "recall_by_label": [
+      {
+        "Label": "Bot",
+        "friday_rows": 1953,
+        "RF recall": 0.0,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "DDoS",
+        "friday_rows": 128016,
+        "RF recall": 0.6327412198475191,
+        "too_rare": false,
+        "status": "enough rows"
+      },
+      {
+        "Label": "PortScan",
+        "friday_rows": 90819,
+        "RF recall": 0.00202600777370374,
+        "too_rare": false,
+        "status": "enough rows"
+      }
+    ]
+  },
+  "ablation": {
+    "RF with Destination Port": {
+      "model": "RF with Destination Port",
+      "train_rows": 300000,
+      "feature_count": 69,
+      "threshold": 0.5612964192845596,
+      "precision": 0.9952288286598518,
+      "recall": 0.9967595364728259,
+      "f1": 0.9959935944438253,
+      "roc_auc": 0.9999620185290314,
+      "pr_auc": 0.9998057510953332,
+      "false_positive_rate": 0.0009515326221386806
+    },
+    "RF without Destination Port": {
+      "model": "RF without Destination Port",
+      "train_rows": 300000,
+      "feature_count": 68,
+      "threshold": 0.5521852504383409,
+      "precision": 0.9942071812190717,
+      "recall": 0.9954328249562655,
+      "f1": 0.9948196255815455,
+      "roc_auc": 0.9999170304408443,
+      "pr_auc": 0.9996980829460169,
+      "false_positive_rate": 0.0011549314873132881
+    }
+  }
+}

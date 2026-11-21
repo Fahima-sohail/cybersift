@@ -1,0 +1,15 @@
+Label,test_rows,RF recall,Rules recall,too_rare,status
+Bot,391,0.8439897698209718,0.0,False,enough rows
+DDoS,25603,0.999531304925204,0.6337147990469867,False,enough rows
+DoS GoldenEye,2056,0.9956225680933852,0.6697470817120622,False,enough rows
+DoS Hulk,34570,0.9986115128724328,0.8923054671680648,False,enough rows
+DoS Slowhttptest,1046,0.994263862332696,0.5229445506692161,False,enough rows
+DoS slowloris,1075,0.9944186046511628,0.3032558139534884,False,enough rows
+FTP-Patator,1187,1.0,1.0,False,enough rows
+Heartbleed,2,1.0,1.0,True,too rare
+Infiltration,7,0.7142857142857143,0.0,True,too rare
+PortScan,18164,0.9998348381413785,0.5048447478528958,False,enough rows
+SSH-Patator,644,0.9937888198757764,1.0,False,enough rows
+Web Attack - Brute Force,294,0.9897959183673469,0.003401360544217687,False,enough rows
+Web Attack - Sql Injection,4,0.0,0.0,True,too rare
+Web Attack - XSS,130,0.9846153846153847,0.0,False,enough rows
