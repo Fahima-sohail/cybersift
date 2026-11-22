@@ -37,6 +37,10 @@ ABLATION_CSV_PATH = TABLES_DIR / "ablation_destination_port.csv"
 WORKLOAD_REDUCTION_CSV_PATH = TABLES_DIR / "workload_reduction.csv"
 FALSE_NEGATIVES_CSV_PATH = TABLES_DIR / "errors_false_negatives.csv"
 FALSE_POSITIVES_CSV_PATH = TABLES_DIR / "errors_false_positives.csv"
+EDA_CLASS_BALANCE_CSV_PATH = TABLES_DIR / "eda_class_balance.csv"
+EDA_ATTACK_TYPE_COUNTS_CSV_PATH = TABLES_DIR / "eda_attack_type_counts.csv"
+TEST_LOG_PATH = REPORTS_DIR / "test_log.txt"
+TEST_CASES_CSV_PATH = TABLES_DIR / "test_cases.csv"
 
 RANDOM_STATE = 42
 LABEL_COL = "Label"
@@ -91,13 +95,41 @@ PRESET_LABELS = {
 
 APP_PAGE_TITLE = "CyberSift"
 APP_TAGLINE = "Filtering Network Noise, Finding Threats"
+COURSE_LABEL = "AI2002 · Path A: Software (ML + Streamlit)"
+DATASET_SOURCE = "CIC-IDS2017 labeled flow CSVs"
+PREPROCESSING_STEPS = [
+    "Remove exact duplicate flows before splitting.",
+    "Drop duplicate and constant columns found in the dataset.",
+    "Replace infinite values with missing values and convert features to numeric.",
+    "Impute missing values with medians learned on the training split.",
+]
+REPORT_LIMITATIONS = [
+    "The dataset comes from a 2017 laboratory environment.",
+    "The attacks are simulated and may not match current real-world traffic.",
+    "Some CIC-IDS2017 labels may be noisy or inconsistent.",
+    "Very rare attacks have too few examples for a reliable score.",
+    "The model sees flow summaries only; it does not inspect packet payloads.",
+    "The model needs retraining over time as traffic and attack patterns change.",
+]
+GLOSSARY_ENTRIES = [
+    ("Flow", "One recorded conversation between two network endpoints."),
+    ("Feature", "A measured value describing one flow."),
+    ("Label", "The dataset's recorded class for a flow."),
+    ("Attack type", "A named category of malicious traffic in the dataset."),
+    ("Imputation", "Filling a missing feature value with a learned replacement."),
+    ("Random Forest", "A collection of decision trees whose outputs are combined."),
+    ("Tree vote", "One tree's estimate of whether a flow is an attack."),
+    ("Risk score", "The model's estimated attack probability from 0 to 1."),
+    ("Threshold", "The risk score above which a flow becomes an alert."),
+    ("Recall", "The share of known attacks that the model catches."),
+]
 APP_LAYOUT = "wide"
 APP_TABS = [
-    "Threat Desk",
-    "Inspect a Flow",
-    "Live Monitor",
-    "Model Report Card",
-    "How it works",
+    ":material/shield: Threat Desk",
+    ":material/search: Inspect a Flow",
+    ":material/monitoring: Live Monitor",
+    ":material/assessment: Model Report Card",
+    ":material/info: How it works",
 ]
 DATA_SOURCE_OPTIONS = ["Demo traffic", "Upload CSV"]
 MAX_UPLOAD_ROWS = 200_000
@@ -114,8 +146,43 @@ THREAT_DESK_FEATURE_COLUMNS = [
     "SYN Flag Count",
     "RST Flag Count",
 ]
-APP_HISTOGRAM_COLOR = "#00E5A8"
-APP_THRESHOLD_LINE_COLOR = "#F2CC60"
+THREAT_NORMAL_MAX_PCT = 5.0
+THREAT_ELEVATED_MAX_PCT = 20.0
+PRIORITY_QUEUE_SIZE = 5
+PRIORITY_CRITICAL_MIN = 0.90
+PRIORITY_HIGH_MIN = 0.70
+FLOW_MAP_MAX_POINTS = 3_000
+FLOW_MAP_TOP_RISK_LIMIT = 1_000
+FLOW_MAP_PCA_COMPONENTS = 2
+FLOW_MAP_CACHE_ENTRIES = 4
+SCORED_INPUT_CACHE_ENTRIES = 2
+UPLOAD_INPUT_CACHE_ENTRIES = 2
+SERVICE_CHART_TOP_PORTS = 8
+ALERT_LOG_LIMIT = 10
+INSPECT_IMPORTANT_FEATURE_COUNT = 10
+INSPECT_EXPLANATION_FEATURE_COUNT = 5
+LIVE_MONITOR_BATCH_SIZE = 100
+LIVE_MONITOR_ROWS_PER_PHASE = 400
+LIVE_MONITOR_PHASES = [
+    ("Normal traffic", "BENIGN"),
+    ("DDoS burst", "DDoS"),
+    ("Normal traffic", "BENIGN"),
+    ("Port-scan burst", "PortScan"),
+]
+LIVE_MONITOR_SPEED_SECONDS = {"Slow": 0.65, "Normal": 0.25, "Fast": 0.05}
+PORT_SERVICE_NAMES = {
+    21: "FTP",
+    22: "SSH",
+    23: "Telnet",
+    25: "SMTP",
+    53: "DNS",
+    80: "HTTP",
+    123: "NTP",
+    443: "HTTPS",
+    445: "SMB",
+    3389: "RDP",
+    8080: "HTTP-alt",
+}
 
 # These columns are known to be duplicate or constant in CIC-IDS2017.
 # clean_raw also checks the current data and drops any other constants it finds.

@@ -14,11 +14,20 @@ from cybersift.config import (  # noqa: E402
     APP_LAYOUT,
     APP_PAGE_TITLE,
     APP_TABS,
-    APP_TAGLINE,
     DEMO_SAMPLE_PATH,
+    RF_MODEL_PATH,
 )
 from cybersift.predict import load_artifact  # noqa: E402
-from cybersift.ui_tabs import render_sidebar, render_threat_desk, render_coming_soon  # noqa: E402
+from cybersift.ui_tabs import (  # noqa: E402
+    render_how_it_works,
+    render_inspect_flow,
+    render_live_monitor,
+    render_model_report_card,
+    render_sidebar,
+    render_threat_desk,
+)
+from cybersift.theme import inject_css  # noqa: E402
+from cybersift.ui_components import render_footer, render_hero  # noqa: E402
 
 
 @st.cache_resource
@@ -35,15 +44,29 @@ def get_demo_sample():
 
 def main():
     st.set_page_config(page_title=APP_PAGE_TITLE, layout=APP_LAYOUT)
-    st.title(APP_PAGE_TITLE)
-    st.caption(APP_TAGLINE)
+    inject_css()
+
+    if not RF_MODEL_PATH.is_file():
+        st.error(
+            "The saved Random Forest model is missing. Include "
+            "models/cybersift_rf.joblib in the deployment."
+        )
+        st.stop()
+
+    if not DEMO_SAMPLE_PATH.is_file():
+        st.error(
+            "The CyberSift demo sample is missing. Include "
+            "data/sample/cybersift_demo.csv in the deployment."
+        )
+        st.stop()
 
     try:
         artifact = get_artifact()
     except Exception as error:
-        st.error(str(error))
+        st.error(f"CyberSift could not load its saved model: {error}")
         st.stop()
 
+    render_hero()
     threshold, data_source, uploaded_file = render_sidebar(artifact)
     tabs = st.tabs(APP_TABS)
 
@@ -56,9 +79,19 @@ def main():
             demo_loader=get_demo_sample,
         )
 
-    for tab in tabs[1:]:
-        with tab:
-            render_coming_soon()
+    with tabs[1]:
+        render_inspect_flow(artifact, threshold, get_demo_sample)
+
+    with tabs[2]:
+        render_live_monitor(artifact, threshold, get_demo_sample)
+
+    with tabs[3]:
+        render_model_report_card()
+
+    with tabs[4]:
+        render_how_it_works()
+
+    render_footer()
 
 
 if __name__ == "__main__":

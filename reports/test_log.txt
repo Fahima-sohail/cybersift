@@ -1,0 +1,44 @@
+$ D:\python\python.EXE -m pytest -v -s tests/test_cybersift.py --junitxml=D:\AI\cybersift\reports\.pytest-results-eda09324399e425496ad90af0ab73d0a.xml
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- D:\python\python.EXE
+cachedir: .pytest_cache
+rootdir: D:\AI\cybersift
+plugins: anyio-4.16.0, cov-7.1.0, langsmith-0.9.4
+collecting ... collected 18 items
+
+tests/test_cybersift.py::test_artifact_has_expected_feature_count PASSED
+tests/test_cybersift.py::test_benign_flows_are_mostly_low_risk BENIGN: 100.0% low risk across 50 flows
+PASSED
+tests/test_cybersift.py::test_attack_detection_rates_by_label Bot: 75.0% detected (20 rows, 9 unique)
+DDoS: 100.0% detected (20 rows, 20 unique)
+DoS GoldenEye: 100.0% detected (20 rows, 20 unique)
+DoS Hulk: 100.0% detected (20 rows, 20 unique)
+DoS Slowhttptest: 100.0% detected (20 rows, 20 unique)
+DoS slowloris: 100.0% detected (20 rows, 20 unique)
+FTP-Patator: 100.0% detected (20 rows, 20 unique)
+Heartbleed: 100.0% detected (20 rows, 2 unique)
+Infiltration: 75.0% detected (20 rows, 6 unique)
+PortScan: 100.0% detected (20 rows, 20 unique)
+SSH-Patator: 100.0% detected (20 rows, 20 unique)
+Web Attack - Brute Force: 100.0% detected (20 rows, 9 unique)
+Web Attack - Sql Injection: 0.0% detected (20 rows, 4 unique)
+Web Attack - XSS: 100.0% detected (20 rows, 20 unique)
+PASSED
+tests/test_cybersift.py::test_scores_are_probabilities PASSED
+tests/test_cybersift.py::test_empty_dataframe_is_rejected PASSED
+tests/test_cybersift.py::test_missing_feature_names_are_reported PASSED
+tests/test_cybersift.py::test_non_numeric_input_is_rejected PASSED
+tests/test_cybersift.py::test_all_nan_row_is_rejected PASSED
+tests/test_cybersift.py::test_infinity_is_repaired PASSED
+tests/test_cybersift.py::test_extra_unknown_columns_are_ignored PASSED
+tests/test_cybersift.py::test_shuffled_columns_keep_identical_scores PASSED
+tests/test_cybersift.py::test_leading_spaces_in_column_names_are_cleaned PASSED
+tests/test_cybersift.py::test_all_zero_features_produce_a_bounded_score PASSED
+tests/test_cybersift.py::test_negative_duration_produces_a_bounded_score PASSED
+tests/test_cybersift.py::test_huge_values_produce_a_bounded_score PASSED
+tests/test_cybersift.py::test_threshold_zero_flags_all_and_one_flags_none PASSED
+tests/test_cybersift.py::test_repeated_input_is_deterministic PASSED
+tests/test_cybersift.py::test_single_row_matches_batch_score PASSED
+
+- generated xml file: D:\AI\cybersift\reports\.pytest-results-eda09324399e425496ad90af0ab73d0a.xml -
+============================= 18 passed in 8.36s ==============================
